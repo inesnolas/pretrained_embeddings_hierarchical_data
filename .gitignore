@@ -129,5 +129,7 @@ dmypy.json
 .pyre/
 
 
-# numpy files
+# data files
 .npy
+.json
+.lock
