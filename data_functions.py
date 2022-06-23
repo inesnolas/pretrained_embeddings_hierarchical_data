@@ -72,11 +72,11 @@ def normalize_embeddings_based_training_set(dataset_csv, outfolder, raw_embeddin
 if __name__ == "__main__" :
 
 
-    save_folder = "/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/normalized_embeddings"
+    save_folder = "/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals/normalized_embeddings"
 
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/1200_train.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals/1200_train.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals/raw_embeddings",
                                                     mean_embeddings=[], std_embeddings=[], set_name='train')
 
 
@@ -93,26 +93,26 @@ if __name__ == "__main__" :
     mean_list = [mean_embeddings_vggish, mean_embeddings_wav2vec, mean_embeddings_openl3_music, mean_embeddings_openl3_env]
     std_list= [std_embeddings_vggish, std_embeddings_wav2vec, std_embeddings_openl3_music, std_embeddings_openl3_env]
 
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/300_val.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals/300_val.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines//3BirdSpecies9individuals/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines//3BirdSpecies9individuals/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='val')
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines//3BirdSpecies9individuals/207_test.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines//3BirdSpecies9individuals/207_test.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='test')
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/unseen_test.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals/unseen_test.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='unseen_test')
 
 # NSYNTH
 
-    save_folder = "/homes/in304/extract_embeddings_HEAR_baselines/nsynth/normalized_embeddings"
+    save_folder = "/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/normalized_embeddings"
 
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/1200_train.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/1200_train.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/raw_embeddings",
                                                     mean_embeddings=[], std_embeddings=[], set_name='train')
 
 
@@ -129,26 +129,26 @@ if __name__ == "__main__" :
     mean_list = [mean_embeddings_vggish, mean_embeddings_wav2vec, mean_embeddings_openl3_music, mean_embeddings_openl3_env]
     std_list= [std_embeddings_vggish, std_embeddings_wav2vec, std_embeddings_openl3_music, std_embeddings_openl3_env]
 
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/300_val.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/300_val.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='val')
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/207_test.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/207_test.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='test')
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/unseen_test.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/unseen_test.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='unseen_test')
 
 # TUT asc
 
-    save_folder = "/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/normalized_embeddings"
+    save_folder = "/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/normalized_embeddings"
 
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/train.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/train.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/raw_embeddings",
                                                     mean_embeddings=[], std_embeddings=[], set_name='train')
 
 
@@ -165,17 +165,17 @@ if __name__ == "__main__" :
     mean_list = [mean_embeddings_vggish, mean_embeddings_wav2vec, mean_embeddings_openl3_music, mean_embeddings_openl3_env]
     std_list= [std_embeddings_vggish, std_embeddings_wav2vec, std_embeddings_openl3_music, std_embeddings_openl3_env]
 
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/val.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/val.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='val')
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/test.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/test.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='test')
-    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/unseen_test.csv', 
+    normalize_embeddings_based_training_set('/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/unseen_test.csv', 
                                                     outfolder=save_folder, 
-                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/raw_embeddings",
+                                                    raw_embeddings_folder="/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016/raw_embeddings",
                                                     mean_embeddings=mean_list, std_embeddings=std_list, set_name='unseen_test')
 
 
