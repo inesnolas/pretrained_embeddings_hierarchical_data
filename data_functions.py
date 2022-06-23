@@ -72,75 +72,75 @@ def normalize_embeddings_based_training_set(dataset_csv, outfolder, raw_embeddin
 if __name__ == "__main__" :
 
 
-    # save_folder = "/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/normalized_embeddings"
+    save_folder = "/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/normalized_embeddings"
 
-    # # normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/1200_train.csv', 
-    # #                                                 outfolder=save_folder, 
-    # #                                                 raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
-    # #                                                 mean_embeddings=[], std_embeddings=[], set_name='train')
+    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/1200_train.csv', 
+                                                    outfolder=save_folder, 
+                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
+                                                    mean_embeddings=[], std_embeddings=[], set_name='train')
 
 
-    # mean_embeddings_wav2vec = np.load(os.path.join(save_folder, 'mean_embeddings_wav2vec_train.npy'))
-    # std_embeddings_wav2vec = np.load(os.path.join(save_folder, 'std_embeddings_wav2vec_train.npy'))
-    # mean_embeddings_vggish = np.load(os.path.join(save_folder, 'mean_embeddings_vggish_train.npy'))
-    # std_embeddings_vggish = np.load(os.path.join(save_folder, 'std_embeddings_vggish_train.npy'))
-    # mean_embeddings_openl3_env = np.load(os.path.join(save_folder, 'mean_embeddings_openl3_env_train.npy'))
-    # std_embeddings_openl3_env = np.load(os.path.join(save_folder, 'std_embeddings_openl3_env_train.npy'))
-    # mean_embeddings_openl3_music = np.load(os.path.join(save_folder, 'mean_embeddings_openl3_music_train.npy'))
-    # std_embeddings_openl3_music = np.load(os.path.join(save_folder, 'std_embeddings_openl3_music_train.npy'))                                                 
+    mean_embeddings_wav2vec = np.load(os.path.join(save_folder, 'mean_embeddings_wav2vec_train.npy'))
+    std_embeddings_wav2vec = np.load(os.path.join(save_folder, 'std_embeddings_wav2vec_train.npy'))
+    mean_embeddings_vggish = np.load(os.path.join(save_folder, 'mean_embeddings_vggish_train.npy'))
+    std_embeddings_vggish = np.load(os.path.join(save_folder, 'std_embeddings_vggish_train.npy'))
+    mean_embeddings_openl3_env = np.load(os.path.join(save_folder, 'mean_embeddings_openl3_env_train.npy'))
+    std_embeddings_openl3_env = np.load(os.path.join(save_folder, 'std_embeddings_openl3_env_train.npy'))
+    mean_embeddings_openl3_music = np.load(os.path.join(save_folder, 'mean_embeddings_openl3_music_train.npy'))
+    std_embeddings_openl3_music = np.load(os.path.join(save_folder, 'std_embeddings_openl3_music_train.npy'))                                                 
 
-    # #follow same order as in embeddings_model = ['vggish', 'wav2vec', 'openl3_music', 'openl3_env']
-    # mean_list = [mean_embeddings_vggish, mean_embeddings_wav2vec, mean_embeddings_openl3_music, mean_embeddings_openl3_env]
-    # std_list= [std_embeddings_vggish, std_embeddings_wav2vec, std_embeddings_openl3_music, std_embeddings_openl3_env]
+    #follow same order as in embeddings_model = ['vggish', 'wav2vec', 'openl3_music', 'openl3_env']
+    mean_list = [mean_embeddings_vggish, mean_embeddings_wav2vec, mean_embeddings_openl3_music, mean_embeddings_openl3_env]
+    std_list= [std_embeddings_vggish, std_embeddings_wav2vec, std_embeddings_openl3_music, std_embeddings_openl3_env]
 
-    # normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/300_val.csv', 
-    #                                                 outfolder=save_folder, 
-    #                                                 raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines//3BirdSpecies9individuals/raw_embeddings",
-    #                                                 mean_embeddings=mean_list, std_embeddings=std_list, set_name='val')
-    # normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines//3BirdSpecies9individuals/207_test.csv', 
-    #                                                 outfolder=save_folder, 
-    #                                                 raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
-    #                                                 mean_embeddings=mean_list, std_embeddings=std_list, set_name='test')
-    # normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/unseen_test.csv', 
-    #                                                 outfolder=save_folder, 
-    #                                                 raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
-    #                                                 mean_embeddings=mean_list, std_embeddings=std_list, set_name='unseen_test')
+    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/300_val.csv', 
+                                                    outfolder=save_folder, 
+                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines//3BirdSpecies9individuals/raw_embeddings",
+                                                    mean_embeddings=mean_list, std_embeddings=std_list, set_name='val')
+    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines//3BirdSpecies9individuals/207_test.csv', 
+                                                    outfolder=save_folder, 
+                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
+                                                    mean_embeddings=mean_list, std_embeddings=std_list, set_name='test')
+    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/unseen_test.csv', 
+                                                    outfolder=save_folder, 
+                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/raw_embeddings",
+                                                    mean_embeddings=mean_list, std_embeddings=std_list, set_name='unseen_test')
 
 # NSYNTH
 
-    # save_folder = "/homes/in304/extract_embeddings_HEAR_baselines/nsynth/normalized_embeddings"
+    save_folder = "/homes/in304/extract_embeddings_HEAR_baselines/nsynth/normalized_embeddings"
 
-    # normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/1200_train.csv', 
-    #                                                 outfolder=save_folder, 
-    #                                                 raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
-    #                                                 mean_embeddings=[], std_embeddings=[], set_name='train')
+    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/1200_train.csv', 
+                                                    outfolder=save_folder, 
+                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
+                                                    mean_embeddings=[], std_embeddings=[], set_name='train')
 
 
-    # mean_embeddings_wav2vec = np.load(os.path.join(save_folder, 'mean_embeddings_wav2vec_train.npy'))
-    # std_embeddings_wav2vec = np.load(os.path.join(save_folder, 'std_embeddings_wav2vec_train.npy'))
-    # mean_embeddings_vggish = np.load(os.path.join(save_folder, 'mean_embeddings_vggish_train.npy'))
-    # std_embeddings_vggish = np.load(os.path.join(save_folder, 'std_embeddings_vggish_train.npy'))
-    # mean_embeddings_openl3_env = np.load(os.path.join(save_folder, 'mean_embeddings_openl3_env_train.npy'))
-    # std_embeddings_openl3_env = np.load(os.path.join(save_folder, 'std_embeddings_openl3_env_train.npy'))
-    # mean_embeddings_openl3_music = np.load(os.path.join(save_folder, 'mean_embeddings_openl3_music_train.npy'))
-    # std_embeddings_openl3_music = np.load(os.path.join(save_folder, 'std_embeddings_openl3_music_train.npy'))                                                 
+    mean_embeddings_wav2vec = np.load(os.path.join(save_folder, 'mean_embeddings_wav2vec_train.npy'))
+    std_embeddings_wav2vec = np.load(os.path.join(save_folder, 'std_embeddings_wav2vec_train.npy'))
+    mean_embeddings_vggish = np.load(os.path.join(save_folder, 'mean_embeddings_vggish_train.npy'))
+    std_embeddings_vggish = np.load(os.path.join(save_folder, 'std_embeddings_vggish_train.npy'))
+    mean_embeddings_openl3_env = np.load(os.path.join(save_folder, 'mean_embeddings_openl3_env_train.npy'))
+    std_embeddings_openl3_env = np.load(os.path.join(save_folder, 'std_embeddings_openl3_env_train.npy'))
+    mean_embeddings_openl3_music = np.load(os.path.join(save_folder, 'mean_embeddings_openl3_music_train.npy'))
+    std_embeddings_openl3_music = np.load(os.path.join(save_folder, 'std_embeddings_openl3_music_train.npy'))                                                 
 
-    # #follow same order as in embeddings_model = ['vggish', 'wav2vec', 'openl3_music', 'openl3_env']
-    # mean_list = [mean_embeddings_vggish, mean_embeddings_wav2vec, mean_embeddings_openl3_music, mean_embeddings_openl3_env]
-    # std_list= [std_embeddings_vggish, std_embeddings_wav2vec, std_embeddings_openl3_music, std_embeddings_openl3_env]
+    #follow same order as in embeddings_model = ['vggish', 'wav2vec', 'openl3_music', 'openl3_env']
+    mean_list = [mean_embeddings_vggish, mean_embeddings_wav2vec, mean_embeddings_openl3_music, mean_embeddings_openl3_env]
+    std_list= [std_embeddings_vggish, std_embeddings_wav2vec, std_embeddings_openl3_music, std_embeddings_openl3_env]
 
-    # normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/300_val.csv', 
-    #                                                 outfolder=save_folder, 
-    #                                                 raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
-    #                                                 mean_embeddings=mean_list, std_embeddings=std_list, set_name='val')
-    # normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/207_test.csv', 
-    #                                                 outfolder=save_folder, 
-    #                                                 raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
-    #                                                 mean_embeddings=mean_list, std_embeddings=std_list, set_name='test')
-    # normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/unseen_test.csv', 
-    #                                                 outfolder=save_folder, 
-    #                                                 raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
-    #                                                 mean_embeddings=mean_list, std_embeddings=std_list, set_name='unseen_test')
+    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/300_val.csv', 
+                                                    outfolder=save_folder, 
+                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
+                                                    mean_embeddings=mean_list, std_embeddings=std_list, set_name='val')
+    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/207_test.csv', 
+                                                    outfolder=save_folder, 
+                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
+                                                    mean_embeddings=mean_list, std_embeddings=std_list, set_name='test')
+    normalize_embeddings_based_training_set('/homes/in304/extract_embeddings_HEAR_baselines/nsynth/unseen_test.csv', 
+                                                    outfolder=save_folder, 
+                                                    raw_embeddings_folder="/homes/in304/extract_embeddings_HEAR_baselines/nsynth/raw_embeddings",
+                                                    mean_embeddings=mean_list, std_embeddings=std_list, set_name='unseen_test')
 
 # TUT asc
 

@@ -77,32 +77,12 @@ def evaluate_initial_embeddings(dataset, experiments_folder, test_csv, train_csv
         embeddings_val = pca.transform(embeddings_val)
         embeddings_test = pca.transform(embeddings_test)
         embeddings_htest = pca.transform(embeddings_htest)
-    # if (not n_dims == None) and (n_dims<embeddings_train.shape[0]):
-
-    #     # pca = pca_initial_embeddings_fit(embeddings_train, n_dims)
-    #     pca = PCA(n_components=n_dims)
-    #     pca.fit(embeddings_train)
-
-    #     embeddings_train = pca.transform(embeddings_train)
-    #     embeddings_val = pca.transform(embeddings_val)
-    #     embeddings_test = pca.transform(embeddings_test)
-    #     embeddings_htest = pca.transform(embeddings_htest)
-
-    # elif n_dims > embeddings_train.shape[0]:
-    #     return dataset, n_dims, '', '', '', '', '', '', '', '', '', '', '', '', 
     
-    # else:
-    #     n_dims = embeddings_val.shape[1]  # original dimensions(128?) just for printing
-
-
     embeddings_train = normalize_data(embeddings_train) # transform to norm 1
     embeddings_val = normalize_data(embeddings_val)
     embeddings_test = normalize_data(embeddings_test)
     embeddings_htest = normalize_data(embeddings_htest)
 
-
-
-   
 
 
     train_silhouette_score_finelevel_labels = ev.evaluate_cluster_quality_based_gt_annotations(embeddings_train, gt__train_labels)
@@ -183,31 +163,31 @@ def create_results_table(emb_model, emb_dim):
         writer.writerow(columns)
 
         # writer.writerow(evaluate_initial_embeddings(dataset, experiments_folder, test_csv, train_csv, val_csv, hard_test_csv , bs, target_labels, embeddings_model, embedding_dimensions=128, n_dims=None)
-        writer.writerow(evaluate_initial_embeddings("3BirdSpecies9individuals","/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model, embedding_dimensions=emb_dim, n_dims=3))
+        writer.writerow(evaluate_initial_embeddings("3BirdSpecies9individuals","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model, embedding_dimensions=emb_dim, n_dims=3))
         for i in dims:
             if i>= emb_dim:
                 break
             else:
-                writer.writerow(evaluate_initial_embeddings("3BirdSpecies9individuals","/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=i ))
-        writer.writerow(evaluate_initial_embeddings("3BirdSpecies9individuals","/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels',embeddings_model= emb_model,embedding_dimensions=emb_dim))
+                writer.writerow(evaluate_initial_embeddings("3BirdSpecies9individuals","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=i ))
+        writer.writerow(evaluate_initial_embeddings("3BirdSpecies9individuals","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/3BirdSpecies9individuals", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels',embeddings_model= emb_model,embedding_dimensions=emb_dim))
         
         print('\n Nsynth data')
-        writer.writerow(evaluate_initial_embeddings("Nsynth","/homes/in304/extract_embeddings_HEAR_baselines/nsynth", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=3))
+        writer.writerow(evaluate_initial_embeddings("Nsynth","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=3))
         for i in dims:
             if i>= emb_dim:
                 break
             else:
-                writer.writerow(evaluate_initial_embeddings("Nsynth","/homes/in304/extract_embeddings_HEAR_baselines/nsynth", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels',embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=i ))
-        writer.writerow(evaluate_initial_embeddings("Nsynth","/homes/in304/extract_embeddings_HEAR_baselines/nsynth", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim))
+                writer.writerow(evaluate_initial_embeddings("Nsynth","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels',embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=i ))
+        writer.writerow(evaluate_initial_embeddings("Nsynth","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/nsynth", "207_test.csv", "1200_train.csv", "300_val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim))
         
         print('\n TuTASC data')
-        writer.writerow(evaluate_initial_embeddings("TUTasc","/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016", "test.csv", "train.csv", "val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=3))
+        writer.writerow(evaluate_initial_embeddings("TUTasc","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016", "test.csv", "train.csv", "val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=3))
         for i in dims:
             if i>= emb_dim:
                 break
             else:
-                writer.writerow(evaluate_initial_embeddings("TUTasc","/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016", "test.csv", "train.csv", "val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels',embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=i ))
-        writer.writerow(evaluate_initial_embeddings("TUTasc","/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016", "test.csv", "train.csv", "val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim))
+                writer.writerow(evaluate_initial_embeddings("TUTasc","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016", "test.csv", "train.csv", "val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels',embeddings_model= emb_model,embedding_dimensions=emb_dim, n_dims=i ))
+        writer.writerow(evaluate_initial_embeddings("TUTasc","/homes/in304/extract_pretrained_embeddings_from_HEARbaselines/TUT_ASC2016", "test.csv", "train.csv", "val.csv", "unseen_test.csv" , bs=15, tgt_labels = 'hierarchical_labels', embeddings_model= emb_model,embedding_dimensions=emb_dim))
         
     return
 
