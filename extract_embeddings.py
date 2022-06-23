@@ -14,12 +14,20 @@ import torch
 import hearbaseline.wav2vec2 as wav2vec
 import hearbaseline.torchopenl3 as openl3
 import hearbaseline.vggish as vggish 
+<<<<<<< HEAD
+import hearbaseline.vqt as vqt
+=======
+>>>>>>> c915441c4180111b30c461b2c899ba9286eef2ff
 
 import h5py
 import os
 
 
 
+<<<<<<< HEAD
+
+
+=======
 # base_folder_save_embeddings = "/homes/in304/extract_embeddings_HEAR_baselines/embeddings"
 # dataset_folder = os.path.join(base_folder_save_embeddings, "TUT_ASC2016") 
 # open_l3_embeddings_path = os.path.join(dataset_folder, "openL3_embeddings" ) 
@@ -27,14 +35,18 @@ import os
 # vggish_embeddings_path = os.path.join(dataset_folder, "vggish_embeddings" ) 
 
 # 0 - created csv at dcase_datafunctions.py
+>>>>>>> c915441c4180111b30c461b2c899ba9286eef2ff
 # master_csv = '/homes/in304/extract_embeddings_HEAR_baselines/TUT_data_9scenes_3families.csv'
 
 # master_csv = "/homes/in304/extract_embeddings_HEAR_baselines/threeBirdSpecies_data_9individals_3families.csv"
 
 def get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder):
 
-    model_wav2vec = wav2vec.load_model()
-    model_openl3 = openl3.load_model()
+
+    model_wav2vec = wav2vec.load_model(model_hub = "facebook/wav2vec2-base-100k-voxpopuli") # embedding size =768 , default is facebook/wav2vec2-large-100k-voxpopuli embedding size 1024
+    model_openl3_env = openl3.load_model( content_type="env", embedding_size=512) # defaults use content-type music, embedding siez =6400
+    model_openl3_music = openl3.load_model( content_type="music", embedding_size=512)
+
     model_vggish = vggish.load_model()
     dataset = pd.read_csv(dataset_csv)
 
@@ -50,97 +62,81 @@ def get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder):
         audio, sr = sf.read(audio_file_path)
         audio_tensor = torch.from_numpy(audio).reshape(1,-1).type(dtype=torch.FloatTensor)
         
-        emb_wav2vec2 = wav2vec.get_scene_embeddings(audio_tensor.cuda(), model_wav2vec) #embedding shape = 1024
-        emb_openl3 = openl3.get_scene_embeddings(audio_tensor.cuda(), model_openl3) #embeddings shpae = 6144
+
+        emb_wav2vec2 = wav2vec.get_scene_embeddings(audio_tensor.cuda(), model_wav2vec) 
+        emb_openl3_env = openl3.get_scene_embeddings(audio_tensor.cuda(), model_openl3_env) 
+        emb_openl3_music = openl3.get_scene_embeddings(audio_tensor.cuda(), model_openl3_music)
+
         emb_vggish = vggish.get_scene_embeddings(audio_tensor.cuda(), model_vggish) #embedding shape = 128
 
     
         # save embeddings with filename as wavname
         np.save(os.path.join(output_folder, wavfilename[0:-4]+'_wav2vec'), emb_wav2vec2.detach().cpu().numpy())
-        np.save(os.path.join(output_folder, wavfilename[0:-4]+'_openl3'), emb_openl3.detach().cpu().numpy())
+        np.save(os.path.join(output_folder, wavfilename[0:-4]+'_openl3_env'), emb_openl3_env.detach().cpu().numpy())
+        np.save(os.path.join(output_folder, wavfilename[0:-4]+'_openl3_music'), emb_openl3_music.detach().cpu().numpy())
         np.save(os.path.join(output_folder, wavfilename[0:-4]+'_vggish'), emb_vggish.detach().cpu().numpy())
 
     return
 
 if __name__ == "__main__" :
 
-    # dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/embeddings/3BirdSpecies9individuals/1200_train.csv"
+
+    # 3BIRDSPECIES
+    
     audio_folder = '/import/c4dm-datasets/animal_identification/AAII_paper_augmented_dataset/AAII_augmented_data'
-    output_folder = '/homes/in304/extract_embeddings_HEAR_baselines/embeddings/3BirdSpecies9individuals'
-    # get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
+    output_folder = '/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals'
 
-
-    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/embeddings/3BirdSpecies9individuals/207_test.csv"
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/1200_train.csv"
     get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
 
-    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/embeddings/3BirdSpecies9individuals/300_val.csv"
+
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/207_test.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
+
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/300_val.csv"
     get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
     
-    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/embeddings/3BirdSpecies9individuals/unseen_test.csv"
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/3BirdSpecies9individuals/unseen_test.csv"
     get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
     
+
+    # NSYNTH
+    audio_folder = '/import/c4dm-datasets/nsynth/nsynth-train/audio'
+    output_folder = '/homes/in304/extract_embeddings_HEAR_baselines/nsynth'
+
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/nsynth/1200_train.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
+
+
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/nsynth/207_test.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
+
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/nsynth/300_val.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
     
-    print('stop')
-    # ge.get_embeddings(master_csv,outputs_folder)
-
-## 2 - Aggregate embeddings over time:
-# averaged_time_embeddings_folder = os.path.join("/homes/in304/rank-based-embeddings/RankBasedLoss_for_DCASEasc2016_dataset","averaged_time_VGGish_embeddings")
-
-# if not os.path.exists(averaged_time_embeddings_folder):
-#     os.makedirs(averaged_time_embeddings_folder)
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/nsynth/unseen_test.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
 
 
-# manipulate_embeddings.compute_embedding_vectors_per_file(master_csv, outputs_folder, averaged_time_embeddings_folder, aggr_mode="mean")
-# print('Finished computing averaged vector embeddings')
+    #TUTasc
+    audio_folder = '/import/c4dm-datasets/TUT_acoustic_scenes_2016_dev/TUT-acoustic-scenes-2016-development/audio/'
+    output_folder = '/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016'
 
-# # ## 3 - Compute distances:
-# # examples_per_class_name = df.select_examples_per_attribute(master_csv, attribute='individual_id')
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/train.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
 
-# # ## 3.1 - Comppute within class distances:
-# # within_class_average_distance_from_averaged_embeddings = manipulate_embeddings.compute_within_class_distance(corrected_csv, averaged_time_embeddings_folder, examples_per_class_name )  
-# # within_class_average_distance_from_maxpooled_embeddings = manipulate_embeddings.compute_within_class_distance(corrected_csv, maxpooled_embeddings_folder, examples_per_class_name ) 
-# #     # Save these!
-# # with open(os.path.join(outputs_folder,"within_class_average_distance_from_averaged_embeddings_dict"), 'w') as fp:
-# #     json.dump(within_class_average_distance_from_averaged_embeddings, fp)
-# # with open(os.path.join(outputs_folder, "within_class_average_distance_from_maxpooled_embeddings_dict"), 'w') as fp:
-# #     json.dump(within_class_average_distance_from_maxpooled_embeddings, fp)
 
-# # ## 3.2 - Compute inter-class distances:
-# # inter_class_average_distance_from_averaged_embeddings = manipulate_embeddings.compute_inter_class_distance(corrected_csv, averaged_time_embeddings_folder, examples_per_class_name )
-# # inter_class_average_distance_from_maxpooled_embeddings = manipulate_embeddings.compute_inter_class_distance(corrected_csv, maxpooled_embeddings_folder, examples_per_class_name )
-# #     # Save these!
-# # with open(os.path.join(outputs_folder,"inter_class_average_distance_from_averaged_embeddings_dict"), 'w') as fp:
-# #     json.dump(inter_class_average_distance_from_averaged_embeddings, fp)
-# # with open(os.path.join(outputs_folder,"inter_class_average_distance_from_maxpooled_embeddings_dict"), 'w') as fp:
-# #     json.dump(inter_class_average_distance_from_maxpooled_embeddings, fp)
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/test.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
+
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/val.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
+    
+    dataset_csv = "/homes/in304/extract_embeddings_HEAR_baselines/TUT_ASC2016/unseen_test.csv"
+    get_embeddings_with_hearbaselines(dataset_csv, audio_folder, output_folder)
 
 
 
 
 
-# # # ## 4 - plot distance matrix:
-
-
-
-
-
-# # classes_dict = json.load(open(os.path.join(outputs_folder, "IDclasses_per_species.json")))
-# # within_class_average_distance_from_averaged_embeddings = json.load(open(os.path.join(outputs_folder, "within_class_average_distance_from_averaged_embeddings_dict")))
-# # inter_class_average_distance_from_averaged_embeddings = json.load(open(os.path.join(outputs_folder,"inter_class_average_distance_from_averaged_embeddings_dict")))
-
-
-# # dist_matrix_averaged_embeddings, list_classes = manipulate_embeddings.make_distances_matrix_from_inter_and_intra_classes_disctances_dict(within_class_average_distance_from_averaged_embeddings, inter_class_average_distance_from_averaged_embeddings, classes_dict)
-# # # dist_matrix_maxpooled_embeddings, list_classes = manipulate_embeddings.make_distances_matrix_from_inter_and_intra_classes_disctances_dict(within_class_average_distance_from_maxpooled_embeddings, inter_class_average_distance_from_maxpooled_embeddings, classes_dict)
-
-
-# # np.save( os.path.join(outputs_folder, 'distance_matrix.npy'), dist_matrix_averaged_embeddings)
-
-# # dist_matrix_averaged_embeddings = np.load(os.path.join(outputs_folder, 'distance_matrix.npy'))
-
-
-
-
-# # show_results.plot_heatmap_distance_matrix(dist_matrix_averaged_embeddings, list_classes, os.path.join(outputs_folder, 'dist_matrix_averaged_embeddings.png'))
-# # # show_results.plot_heatmap_matrix(dist_matrix_maxpooled_embeddings, list_classes, os.path.join(outputs_folder,'dist_matrix_maxpooled_embeddings.png'))
-
-
+   
