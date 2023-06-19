@@ -1,4 +1,4 @@
-# extract_pretrained_embeddings_from_HEARbaselines
+# pretrained embeddings for hierarchical data representation.
 
 
 HEARbaselines intallation pip: https://github.com/hearbenchmark/hear-baseline
